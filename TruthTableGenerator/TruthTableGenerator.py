@@ -34,16 +34,18 @@ class newbool(object):
 T = newbool(True)
 F = newbool(False)
 
-inputstr = input("Input formula(using ¬ ∧ ∨ → ↔)\n")
+inputstr = input("Input formula(USING ¬ ∧ ∨ → ↔ OR - & | > =)\n")
 
 word = list()
 for iii in re.findall(r"\w+", inputstr):
-    if iii not in word and iii not in {"T","F"}:
+    if iii not in word and iii not in {"T", "F"}:
         word.append(iii)
         print(iii, end="\t")
 print(inputstr)
 print("-"*8*(len(word)+1))
 
+inputstr = inputstr.replace("&", "*").replace("|",
+                                              "+").replace(">", "&").replace("=", "|")
 inputstr = inputstr.replace("¬", "-").replace("∧", "*").replace("∨",
                                                                 "+").replace("→", "&").replace("↔", "|")
 
